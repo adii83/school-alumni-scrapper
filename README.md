@@ -1,4 +1,4 @@
-# LinkedIn Alumni Scraper
+# School Alumni Scrapper
 
 <p align="left">
   <img src="https://img.shields.io/badge/LinkedIn%20Alumni%20Scraper-Universitas%20Muhammadiyah%20Malang-E87722?style=for-the-badge" />
