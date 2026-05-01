@@ -168,32 +168,56 @@ MAX_RESULTS     = 10                         # Jumlah hasil Apify per pencarian
 
 ## Format Output CSV
 
-Setiap sesi scraping menghasilkan file `.csv` dengan struktur kolom berikut:
+Setiap sesi scraping menghasilkan file `.csv` dengan 21 kolom berikut:
 
-```
-Nama Lulusan, NIM, Tahun Masuk, Tanggal Lulus, Fakultas, Program Studi,
-Linkedin, Email, Alamat Bekerja,
-Tempat Bekerja (Present), Posisi Jabatan (Present), Status Pekerjaan (Present), Sosmed Kantor (Present),
-Tempat Bekerja (Terakhir), Posisi Jabatan (Terakhir), Status Pekerjaan (Terakhir), Sosmed Kantor (Terakhir),
-Instagram, TikTok, Facebook, Nomor HP
-```
+**Contoh output (data fiktif):**
 
-**Contoh baris output (data fiktif):**
+**Identitas Alumni**
 
-```csv
-Nama Lulusan,NIM,Tahun Masuk,Tanggal Lulus,Fakultas,Program Studi,Linkedin,Email,Alamat Bekerja,Tempat Bekerja (Present),Posisi Jabatan (Present),Status Pekerjaan (Present),Sosmed Kantor (Present),Tempat Bekerja (Terakhir),Posisi Jabatan (Terakhir),Status Pekerjaan (Terakhir),Sosmed Kantor (Terakhir),Instagram,TikTok,Facebook,Nomor HP
-John Doe,201910001,2019,2023,Teknik,Informatika,https://linkedin.com/in/johndoe,john@email.com,Jakarta Raya,PT Teknologi Nusantara,Software Engineer,Bekerja Sesuai Bidang,https://linkedin.com/company/teknologi-nusantara,PT Startup Maju,Junior Developer,Bekerja Sesuai Bidang,https://linkedin.com/company/startup-maju,Tidak publik,Tidak publik,Tidak publik,Tidak publik
-Jane Smith,201910002,2019,2023,Bisnis,Manajemen,https://linkedin.com/in/janesmith,Tidak publik,Surabaya,Bank Central Asia,Management Trainee,Bekerja Sesuai Bidang,https://linkedin.com/company/bca,Tidak dicantumkan,Tidak dicantumkan,Belum Pernah Bekerja,Tidak dicantumkan,Tidak publik,Tidak publik,Tidak publik,Tidak publik
-```
+| Nama Lulusan | NIM | Tahun Masuk | Tanggal Lulus | Fakultas | Program Studi |
+|---|---|---|---|---|---|
+| John Doe | 201910001 | 2019 | 2023 | Teknik | Informatika |
+| Jane Smith | 201910002 | 2019 | 2023 | Bisnis | Manajemen |
 
-**Keterangan kolom penting:**
+**Informasi Profil LinkedIn**
 
-| Kolom | Keterangan |
+| Linkedin | Email | Alamat Bekerja |
+|---|---|---|
+| linkedin.com/in/johndoe | john@email.com | Jakarta Raya |
+| linkedin.com/in/janesmith | Tidak publik | Surabaya |
+
+**Pekerjaan Saat Ini (Present)**
+
+| Tempat Bekerja (Present) | Posisi Jabatan (Present) | Status Pekerjaan (Present) | Sosmed Kantor (Present) |
+|---|---|---|---|
+| PT Teknologi Nusantara | Software Engineer | Bekerja Sesuai Bidang | linkedin.com/company/tek-nus |
+| Bank Central Asia | Management Trainee | Bekerja Sesuai Bidang | linkedin.com/company/bca |
+
+**Pekerjaan Terakhir / Sebelumnya**
+
+| Tempat Bekerja (Terakhir) | Posisi Jabatan (Terakhir) | Status Pekerjaan (Terakhir) | Sosmed Kantor (Terakhir) |
+|---|---|---|---|
+| PT Startup Maju | Junior Developer | Bekerja Sesuai Bidang | linkedin.com/company/startup |
+| Tidak dicantumkan | Tidak dicantumkan | Belum Pernah Bekerja | Tidak dicantumkan |
+
+**Informasi Kontak Pribadi**
+
+| Instagram | TikTok | Facebook | Nomor HP |
+|---|---|---|---|
+| Tidak publik | Tidak publik | Tidak publik | Tidak publik |
+| Tidak publik | Tidak publik | Tidak publik | Tidak publik |
+
+**Keterangan nilai khusus:**
+
+| Nilai | Keterangan |
 |---|---|
-| Status Pekerjaan | Diklasifikasikan otomatis: `Bekerja Sesuai Bidang`, `Melanjutkan Pendidikan`, `Tidak Ada Pekerjaan Aktif`, dll |
-| Present vs Terakhir | Sistem membedakan pekerjaan yang masih aktif dan yang sudah ditinggalkan |
-| Tidak publik | Informasi yang tidak dipublikasikan oleh target di LinkedIn |
-| Tidak dicantumkan | Kolom yang tidak memiliki data sama sekali pada profil |
+| `Bekerja Sesuai Bidang` | Status diklasifikasikan otomatis berdasarkan posisi dan headline |
+| `Melanjutkan Pendidikan` | Terdeteksi sebagai mahasiswa/pelajar aktif |
+| `Tidak Ada Pekerjaan Aktif` | Tidak ada posisi pekerjaan yang aktif tercantum |
+| `Belum Pernah Bekerja` | Tidak ada riwayat pekerjaan sama sekali |
+| `Tidak publik` | Data ada namun tidak dipublikasikan oleh pemilik profil |
+| `Tidak dicantumkan` | Data tidak tersedia di profil LinkedIn |
+
 
 ---
 
